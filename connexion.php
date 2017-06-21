@@ -9,7 +9,7 @@ if (!empty($_SESSION)) {
   echo '<script language="javascript">';
   echo 'alert("Vous êtes déjà connecté !")';
   echo '</script>';
-  // header('Location: index.php');
+  header('Location: index.php');
 
 }
 
