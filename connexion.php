@@ -13,13 +13,6 @@ if (!empty($_SESSION)) {
 
 }
 
-
-?>
-
-<?php include('inc/header.php'); ?>
-
-<?php
-
 $error = array();
 
 if (!empty($_POST['connex'])) {
@@ -76,7 +69,7 @@ elseif (!empty($_POST['forget'])) {
 
 ?>
 
-<?php include('data/frontheader.php'); ?>
+<?php include('inc/header.php'); ?>
 
 
 <form action="" method="post">
