@@ -2,9 +2,6 @@
 include('inc/pdo.php');
 include('inc/functions.php');
 
-<<<<<<< HEAD
-$title = 'Page d\'insciption';
-=======
 //////////////////////////////////
 
 $title = 'Page d\'inscription';
@@ -101,7 +98,7 @@ if (!empty($_POST['btnsubmit'])) {
   //////////////////////////////////
 
   // On passe a la vérification d'erreur
-  
+
   if (count($error) == 0) {
     $succes = true;
 
@@ -123,14 +120,11 @@ if (!empty($_POST['btnsubmit'])) {
   }
 
 }
->>>>>>> olivier
 
 ?>
 
 <?php include('inc/header.php'); ?>
 
-<<<<<<< HEAD
-=======
 <form class="" action="" method="post">
 
   <!-- EMAIL -->
@@ -164,7 +158,5 @@ if (!empty($_POST['btnsubmit'])) {
   <input type="submit" name="btnsubmit" value="Crée mon compte">
 
 </form>
-
->>>>>>> olivier
 
 <?php include('inc/footer.php'); ?>
