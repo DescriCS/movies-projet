@@ -4,7 +4,7 @@ include('inc/functions.php');
 
 //////////////////////////////////
 
-$title = 'Page d\'insciption';
+$title = 'Page d\'inscription';
 $error = array();
 $success = false;
 
