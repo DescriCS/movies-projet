@@ -17,7 +17,7 @@ $title = 'Page d\'acceuil';
 
  foreach ($movies_full as $movie) { ?>
    <div class="movie">
-      <a href="detail.php?id=<?php echo $movie['id']; ?>">
+      <a href="single.php?id=<?php echo $movie['id']; ?>">
         <img src="./asset/posters/<?php echo $movie['id']; ?>.jpg" alt="<?php echo $movie['title']; ?>">
       </a>
    </div>
