@@ -44,4 +44,5 @@ $title = 'Page d\'insciption';
 
 </form>
 
+
 <?php include('inc/footer.php'); ?>
