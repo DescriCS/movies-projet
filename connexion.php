@@ -1,11 +1,10 @@
 <?php
-session_start();
 include('inc/pdo.php');
 include('inc/functions.php');
 
 $title = 'Page de connexion';
 
-if (empty($_SESSION)) {
+if (isLogged() === true) {
   echo '<script language="javascript">';
   echo 'alert("Vous êtes déjà connecté !")';
   echo '</script>';
@@ -82,8 +81,8 @@ elseif (!empty($_POST['forget'])) {
   <span class="error"><?php if (!empty($error['password'])) {echo $error['password']; } ?></span><br />
   <input type="password" name="password" value="<?php if (!empty($_POST['password'])) {echo $_POST['password'] ; } ?>">
 
+  <input type="submit" name="connex" value="Connexion">
   <input type="submit" name="forget" value="Code oublié"><br />
-  <input type="submit" name="connex" value="Connection">
 
 </form>
 

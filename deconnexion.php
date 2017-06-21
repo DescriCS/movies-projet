@@ -1,12 +1,6 @@
 <?php
-include('inc/pdo.php');
-include('inc/functions.php');
+session_start();
+session_destroy();
+unset($_SESSION);
 
-$title = 'Page de deconnexion';
-
-?>
-
-<?php include('inc/header.php'); ?>
-
-
-<?php include('inc/footer.php'); ?>
+header('Location: index.php');

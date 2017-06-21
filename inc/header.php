@@ -20,12 +20,19 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Tout les films</a>
           </li>
-          <li class="nav-item">
+          <?php if (isLogged() === false) { ?>
+            <li class="nav-item">
             <a class="nav-link" href="connexion.php">Connexion</a>
-          </li>
-          <li class="nav-item">
+            </li>
+            <li class="nav-item">
             <a class="nav-link" href="inscription.php">Inscription</a>
-          </li>
+            </li>
+          <?php } ?>
+          <?php if (isLogged() === true) { ?>
+            <li class="nav-item">
+            <a class="nav-link" href="deconnexion.php">Deconnexion</a>
+            </li>
+          <?php } ?>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -35,7 +42,4 @@
     </nav>
 
 
-    <!-- NE RIEN METTRE EN DESSOUS DES SCRIPT -->
-    <script src="./asset/js/jquery-3.2.1.js" charset="utf-8"></script>
-    <script src="./asset/js/bootstrap.js" charset="utf-8"></script>
-    <script src="./asset/js/app.js" charset="utf-8"></script>
+    <?php print_r($_SESSION); ?>
