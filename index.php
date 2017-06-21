@@ -4,7 +4,7 @@ include('inc/functions.php');
 
 $title = 'Page d\'acceuil';
 
-$sql = "SELECT * FROM movies_full ORDER BY RAND()";
+$sql = "SELECT * FROM movies_full ORDER BY RAND() LIMIT 20";
 
 $query = $pdo->prepare($sql);
 $query->execute();
@@ -23,9 +23,13 @@ include('inc/header.php');
 foreach ($movies_full as $movies) { ?>
 
     <div class="maPageaccueil">
-      <a href="single.php?id=<?php echo $movies['id']; ?>">
-        <img src="./asset/posters/<?php echo $movies['id']; ?>.jpg" alt="<?php echo $movies['slug']; ?>"
-      </a>
+      <p>
+          <a href="single.php?id=<?php echo $movies['id']; ?>">
+            <img src="./asset/posters/<?php echo $movies['id']; ?>.jpg" alt="<?php echo $movies['id']; ?>"
+            <p><?php echo $movies['title']; ?></p>
+          </a>
+      </p>
+
 
     </div>
 <?php
