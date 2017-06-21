@@ -7,9 +7,6 @@ $title = 'Page d\'acceuil';
 
 <?php include('inc/header.php'); ?>
 
-<button type="button" name="button"><a href="inscription.php">Inscription</a></button>
-<button type="button" name="button"><a href="connexion.php">Connexion</a></button>
-
 <?php
 
   $sql = "SELECT * FROM movies_full ORDER BY RAND() DESC LIMIT 100";

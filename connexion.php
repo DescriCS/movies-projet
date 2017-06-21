@@ -5,7 +5,7 @@ include('inc/functions.php');
 
 $title = 'Page de connexion';
 
-if (!empty($_SESSION)) {
+if (empty($_SESSION)) {
   echo '<script language="javascript">';
   echo 'alert("Vous êtes déjà connecté !")';
   echo '</script>';
