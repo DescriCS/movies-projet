@@ -41,6 +41,8 @@ if (!empty($_POST['btnsubmit'])) {
     $error['email'] = 'Veuillez renseigner un email.';
   }
 
+  //////////////////////////////////
+
   $pseudo = trim(strip_tags($_POST['pseudo']));
 
   if (!empty($pseudo)) {
@@ -68,6 +70,7 @@ if (!empty($_POST['btnsubmit'])) {
     $error['pseudo'] = 'Aucun pseudo renseigner.';
   }
 
+  //////////////////////////////////
 
   $password = trim(strip_tags($_POST['password']));
   $confirmpassword = trim(strip_tags($_POST['confirmpassword']));
@@ -92,7 +95,10 @@ if (!empty($_POST['btnsubmit'])) {
     $error['password'] = 'Veuillez renseigner votre mot de passe.';
   }
 
+  //////////////////////////////////
+
   // On passe a la vérification d'erreur
+  
   if (count($error) == 0) {
     $succes = true;
 
@@ -135,14 +141,14 @@ if (!empty($_POST['btnsubmit'])) {
     <input type="text" name="pseudo" value="<?php if (!empty($_POST['pseudo'])) { echo $_POST['pseudo']; } ?>">
   </div>
 
-  <!-- EMAIL -->
+  <!-- PASSWORD -->
   <div class="password">
     <label for="">Mot de passe : </label>
     <span class="error"><?php if (!empty($error['password'])) { echo $error['password']; } ?></span>
     <input type="text" name="password" value="<?php if (!empty($_POST['password'])) { echo $_POST['password']; } ?>">
   </div>
 
-  <!-- EMAIL -->
+  <!-- CONFIRM PASSWORD -->
   <div class="confirmpassword">
     <label for="">Confirmation du mot de passe : </label>
     <span class="error"><?php if (!empty($error['confirmpassword'])) { echo $error['confirmpassword']; } ?></span>
