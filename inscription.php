@@ -60,7 +60,7 @@ if (!empty($_POST['btnsubmit'])) {
 
       if(!empty($userpseudo)) {
         // L'email est déjà présente on r'envoie une erreur.
-        $error['pseudo'] = 'pseudo existe déjà dans la base de donnée.';
+        $error['pseudo'] = 'Le pseudo existe déjà dans la base de donnée.';
       }
     }
   } else {
