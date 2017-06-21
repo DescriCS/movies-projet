@@ -49,7 +49,7 @@ if (!empty($_POST['connex'])) {
               'ip_add' => $_SERVER['REMOTE_ADDR']
             );
             if (isLogged() == true) {
-              header('Location: tchat.php');
+              header('Location: index.php');
             }
         }
     }
