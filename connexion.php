@@ -70,7 +70,7 @@ if (!empty($_POST['connex'])) {
   }
 }
 elseif (!empty($_POST['forget'])) {
-  header('Location: forgetpsw.php');
+  header('Location: passwordforget.php');
 }
 
 ?>
@@ -85,10 +85,16 @@ elseif (!empty($_POST['forget'])) {
 
   <label for="password">Mot de passe :</label>
   <span class="error"><?php if (!empty($error['password'])) {echo $error['password']; } ?></span><br />
-  <input type="password" name="password" value="<?php if (!empty($_POST['password'])) {echo $_POST['password'] ; } ?>">
+  <input type="password" name="password" value="<?php if (!empty($_POST['password'])) {echo $_POST['password'] ; } ?>"> <br />
+
+  <label>
+    <input type="checkbox" name="remember"/> Se souvenir de moi
+  </label>
+  <br />
 
   <input type="submit" name="connex" value="Connexion">
-  <input type="submit" name="forget" value="Code oublié"><br />
+  <br />
+  <input type="submit" name="forget" value="Mot de passe oublié ?">
 
 </form>
 

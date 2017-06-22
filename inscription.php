@@ -100,7 +100,7 @@ if (!empty($_POST['btnsubmit'])) {
   // On passe a la vérification d'erreur
 
   if (count($error) == 0) {
-    $succes = true;
+    $success = true;
 
     $token = md5(uniqid(rand(), true));
 
