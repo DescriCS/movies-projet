@@ -32,7 +32,11 @@ if(!empty($_GET['id'])) {
       <div class="movieDetail">
           <h2><?php echo $movie['title']; ?></h2>
           <a href="single.php?id=<?php echo $movie['id']; ?>">
+            <?php if (file_exists("./asset/posters/".$movie['id'].'.jpg') === TRUE) { ?>
             <img src="./asset/posters/<?php echo $movie['id']; ?>.jpg" alt="<?php echo $movie['title']; ?>">
+            <?php } else  { ?>
+            <img src="./asset/images/nopic.png" alt="pas d\'image disponible">
+            <?php } ?>
           </a>
           <p>Titre : <?php echo $movie['title']; ?></p>
           <p>Année : <?php echo $movie['year']; ?></p>
