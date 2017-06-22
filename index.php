@@ -15,6 +15,13 @@ $movies_full = $query->fetchAll();
 // print_r($movies_full);
 // echo "<pre>";
 
+//// Nous souhaitons en effet lui laisser la possibilité de filtrer selon les critères suivants :
+	// -	Catégorie (plusieurs checkboxes, dont une pour cocher tout et une pour tout décocher)
+
+	// -    Années (de xxxx à xxxx)
+	// -    Popularité
+
+
 include('inc/header.php');
 
 ?>
@@ -22,7 +29,7 @@ include('inc/header.php');
 <?php
 foreach ($movies_full as $movies) { ?>
 
-    <div class="maPageaccueil">
+    <div class="movie">
       <p>
           <a href="single.php?id=<?php echo $movies['id']; ?>">
             <img src="./asset/posters/<?php echo $movies['id']; ?>.jpg" alt="<?php echo $movies['id']; ?>"

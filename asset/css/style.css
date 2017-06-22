@@ -2,7 +2,7 @@ body{
   margin: 0;
   background-color: grey;
 }
-.maPageaccueil{
+.movie{
   display: inline-flex;
   flex-direction: row;
   width: 200px;

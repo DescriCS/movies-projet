@@ -10,6 +10,16 @@
   </head>
   <body>
 
+    <div class="lesCheckboxs">
+      <input type="checkbox" name="checkboxes" value="">
+      <input type="checkbox" name="checkboxes" value="">
+      <input type="checkbox" name="checkboxes" value="">
+      <input type="checkbox" name="checkboxes" value="">
+      <input type="checkbox" name="checkboxes" value="">
+      <input type="checkbox" name="checkboxes" value="">
+
+    </div>
+
 
     <!-- NE RIEN METTRE EN DESSOUS DES SCRIPT -->
     <script src="./asset/js/jquery-3.2.1.js" charset="utf-8"></script>
