@@ -18,7 +18,15 @@ $title = 'Page d\'acceuil';
 
    <div class="movie">
       <a href="single.php?id=<?php echo $movie['id']; ?>">
+
+        <?php if (file_exists("./asset/posters/".$movie['id'].'.jpg') === TRUE) { ?>
         <img src="./asset/posters/<?php echo $movie['id']; ?>.jpg" alt="<?php echo $movie['title']; ?>">
+        <h4><?php echo $movie['title'] ?></h4>
+        <?php } else  { ?>
+        <img src="./asset/posters/nopic.png" alt="pas d\'image disponible">
+        <h4><?php echo $movie['title'] ?></h4>
+        <?php } ?>
+
       </a>
    </div>
 

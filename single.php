@@ -13,10 +13,10 @@ if(!empty($_GET['id'])) {
     $query->execute();
     $movie = $query->fetch();
 
-    // echo '<pre>';
-    // print_r($movies_full);
-    // echo '</pre>';
-    // die();
+     //echo '<pre>';
+     //print_r($movie);
+     //echo '</pre>';
+     //die();
 
  } else {
    die('error 404');
