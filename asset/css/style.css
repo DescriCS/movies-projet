@@ -2,6 +2,9 @@ body{
   margin: 0;
   background-color: grey;
 }
+h1{
+  text-align: center;
+}
 .movie{
   display: inline-flex;
   flex-direction: row;
@@ -11,18 +14,19 @@ body{
 }
 .final{
   text-align: center;
-  width: 100px;
+  width: 200px;
   background-color: black;
   color: white;
   font-size: 20px;
   margin: 2em;
+  padding: 1em;
   border-radius: 8px;
 }
 .final a{
   text-decoration: none;
-
+  
 }
 .final a:hover{
-  background-color: #AAA;
+  /*background-color: #AAA;*/
   color: #345;
 }
