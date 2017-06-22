@@ -2,9 +2,11 @@
 include('inc/pdo.php');
 include('inc/functions.php');
 
+//////////////////////////////////
 $error   = array();
 $success = false;
 $title   = 'Modification de mot de passe';
+//////////////////////////////////
 
 if (!empty($_POST['submitnewpassword'])) {
 
@@ -17,14 +19,22 @@ if (!empty($_POST['submitnewpassword'])) {
     $error['password'] = 'Votre mot de passe doit faire plus de caractères.';
   }
 
+//////////////////////////////////
+
   if(count($error) == 0) {
+    // Envoie du nouveau MDP
     $success = true;
+
     // hash password
+    $token = md5(uniqid(rand(), true));
     $passwordhash  = password_hash($password1, PASSWORD_DEFAULT);
 
-    $sql = "UPDATE users (pseudo,email,password,created_at,updated_at,role,token) VALUES ( :pseudo, :email, :password, NOW(), NOW(),'Membre', :token)";
+    $id = $_GET['id'];
+
+    $sql = "UPDATE users SET password= '+ $password1 +' , updated_at= 'NOW()', token= '+ $token +' WHERE id =  '+ $id +' ";
     $query = $pdo->prepare($sql);
     $query->bindValue(':password',$passwordhash, PDO::PARAM_STR);
+    $query->bindValue(':token',$token, PDO::PARAM_STR);
     $query->execute();
 
     echo 'Votre mot de passe a bien été changer';

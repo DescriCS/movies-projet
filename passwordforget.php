@@ -33,8 +33,6 @@ if(!empty($_POST['submitbtn'])){
                 	$body .= '<p><a href="http://localhost/J15/movies-projet/passwordmodification.php?email='.$emailprepare.'&token='.$tokenprepare.'">ICI</a></p>';
                 	$body .= '<p>Rappel : Votre pseudo => '. $user['pseudo'] .'</p>';
                 	echo $body;
-                  // ici faire envoie email ++++++
-                  // Avec PHPMAILER
                 }
 	    }
 }
