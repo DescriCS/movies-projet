@@ -25,24 +25,26 @@ $movies_full = $query->fetchAll();
 include('inc/header.php');
 
 ?>
+
 <h1>Liste des films</h1>
+
 <?php
-foreach ($movies_full as $movies) { ?>
 
-    <div class="movie">
-      <p>
-          <a href="single.php?id=<?php echo $movies['id']; ?>">
-            <img src="./asset/posters/<?php echo $movies['id']; ?>.jpg" alt="<?php echo $movies['id']; ?>"
-            <p><?php echo $movies['title']; ?></p>
-          </a>
-      </p>
+  $sql = "SELECT * FROM movies_full ORDER BY RAND() DESC LIMIT 50";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $movies_full = $query->fetchAll();
+
+ foreach ($movies_full as $movie) { ?>
+
+   <div class="movie">
+      <a href="single.php?id=<?php echo $movie['id']; ?>">
+        <img src="./asset/posters/<?php echo $movie['id']; ?>.jpg" alt="<?php echo $movie['title']; ?>">
+        <p><?php echo $movie['title']; ?></p>
+      </a>
+   </div>
+
+ <?php } ?>
 
 
-    </div>
-<?php
-}?>
-
-
-<?php include('inc/footer.php');
-
-?>
+<?php include('inc/footer.php'); ?>
