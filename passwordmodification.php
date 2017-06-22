@@ -8,35 +8,60 @@ $success = false;
 $title   = 'Modification de mot de passe';
 //////////////////////////////////
 
-if (!empty($_POST['submitnewpassword'])) {
+// Vérification de l'user + sécurisation de changement MDP
+if (!empty($_GET['token'])) {
 
-  $password1  = trim(strip_tags($_POST['newpassword']));
-  $password2  = trim(strip_tags($_POST['newpassword2']));
+  $token = $_GET['token'];
 
-  if ($password1 != $password2) {
-    $error['password'] = 'Les mots de passe ne sont pas identiques.';
-  } elseif(strlen($password1) <= 5) {
-    $error['password'] = 'Votre mot de passe doit faire plus de caractères.';
+  $sql = "SELECT * FROM users WHERE token = :token";
+  $query = $pdo->prepare($sql);
+
+  $query->bindValue(':token',$token, PDO::PARAM_STR);
+
+  $query-> execute();
+  $user = $query->fetch();
+
+  if (!empty($user)) {
+  } else {
+    echo 'error 404';
   }
 
-//////////////////////////////////
 
-  if(count($error) == 0) {
-    // Envoie du nouveau MDP
-    $success = true;
+  // Envoie du formulaire pour le changement de MDP
+  if (!empty($_POST['submitnewpassword'])) {
 
-    // hash password
-    $passwordhash  = password_hash($password1, PASSWORD_DEFAULT);
+    $password1  = trim(strip_tags($_POST['newpassword']));
+    $password2  = trim(strip_tags($_POST['newpassword2']));
 
-    $_GET['token'] = $token;
+    if ($password1 != $password2) {
+      $error['password'] = 'Les mots de passe ne sont pas identiques.';
+    } elseif(strlen($password1) <= 5) {
+      $error['password'] = 'Votre mot de passe doit faire plus de caractères.';
+    }
 
-    $sql = "UPDATE users SET password= '+ $password1 +' , updated_at= 'NOW()', token= '+ $token +' WHERE token =  '+ $token +' ";
-    $query = $pdo->prepare($sql);
-    $query->bindValue(':password',$passwordhash, PDO::PARAM_STR);
-    $query->bindValue(':token',$token, PDO::PARAM_STR);
-    $query->execute();
+  //////////////////////////////////
 
-    echo 'Votre mot de passe a bien été changer';
+    if(count($error) == 0) {
+      // Envoie du nouveau MDP
+      $success = true;
+
+      $id = $user['id'];
+
+      // hash password
+      $passwordhash  = password_hash($password1, PASSWORD_DEFAULT);
+
+      $sql2 = "UPDATE users SET password=  :password , updated_at= NOW(), token= :token  WHERE id = :id";
+
+      $query2 = $pdo->prepare($sql2);
+
+      $query2->bindValue(':id',$id, PDO::PARAM_INT);
+      $query2->bindValue(':password',$passwordhash, PDO::PARAM_STR);
+      $query2->bindValue(':token',$token, PDO::PARAM_STR);
+
+      $query2->execute();
+
+      echo 'Votre mot de passe a bien été changer';
+    }
   }
 }
 
