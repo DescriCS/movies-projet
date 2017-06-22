@@ -117,6 +117,9 @@ if (!empty($_POST['btnsubmit'])) {
       $query->execute();
 
       echo 'Votre compte a bien été enregistrer.';
+
+      header('Location: index.php');
+
   }
 
 }
