@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('inc/pdo.php');
 include('inc/functions.php');
 
@@ -10,6 +9,7 @@ if (isLogged() === true) {
   echo 'alert("Vous êtes déjà connecté !")';
   echo '</script>';
   header('Location: index.php');
+}
 
 if (!empty($_SESSION)) {
   echo '<script language="javascript">';
@@ -77,7 +77,6 @@ elseif (!empty($_POST['forget'])) {
 
 <?php include('inc/header.php'); ?>
 
-
 <form action="" method="post">
 
   <label for="user">Pseudo ou Courriel :</label>
@@ -88,13 +87,9 @@ elseif (!empty($_POST['forget'])) {
   <span class="error"><?php if (!empty($error['password'])) {echo $error['password']; } ?></span><br />
   <input type="password" name="password" value="<?php if (!empty($_POST['password'])) {echo $_POST['password'] ; } ?>">
 
-
   <input type="submit" name="connex" value="Connexion">
   <input type="submit" name="forget" value="Code oublié"><br />
 
-
-
 </form>
-
 
 <?php include('inc/footer.php'); ?>
