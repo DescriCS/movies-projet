@@ -1,7 +1,5 @@
 <?php
-
 session_start();
->>>>>>> olivier
 include('inc/pdo.php');
 include('inc/functions.php');
 
@@ -18,7 +16,6 @@ if (!empty($_SESSION)) {
   echo 'alert("Vous êtes déjà connecté !")';
   echo '</script>';
   // header('Location: index.php');
-
 
 }
 
