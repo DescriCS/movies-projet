@@ -29,7 +29,7 @@ if (!empty($_POST['submitnewpassword'])) {
     $token = md5(uniqid(rand(), true));
     $passwordhash  = password_hash($password1, PASSWORD_DEFAULT);
 
-    $id = $_GET['id'];
+    $_GET['id'] = $id;
 
     $sql = "UPDATE users SET password= '+ $password1 +' , updated_at= 'NOW()', token= '+ $token +' WHERE id =  '+ $id +' ";
     $query = $pdo->prepare($sql);
