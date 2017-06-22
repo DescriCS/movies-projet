@@ -23,7 +23,7 @@ $title = 'Page d\'acceuil';
         <img src="./asset/posters/<?php echo $movie['id']; ?>.jpg" alt="<?php echo $movie['title']; ?>">
         <h4><?php echo $movie['title'] ?></h4>
         <?php } else  { ?>
-        <img src="./asset/posters/nopic.png" alt="pas d\'image disponible">
+        <img src="./asset/images/nopic.png" alt="pas d\'image disponible">
         <h4><?php echo $movie['title'] ?></h4>
         <?php } ?>
 
