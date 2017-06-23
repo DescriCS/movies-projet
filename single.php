@@ -7,18 +7,26 @@ $error = array();
 $success = false;
 
 if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
+
   $id = $_GET['id'];
 
-  $sql = "SELECT * FROM movies_full WHERE id = :id";
+    $sql = "SELECT * FROM movies_full WHERE id = :id";
     $query = $pdo->prepare($sql);
     $query->bindValue(':id',$id, PDO::PARAM_INT);
     $query->execute();
     $movie = $query->fetch();
 
-     //echo '<pre>';
-     //print_r($movie);
-     //echo '</pre>';
-     //die();
+    $account_id = $_SESSION['id'];
+
+    $sql2 = "SELECT note FROM avis WHERE $account_id = user_id AND movie_id = $id";
+    $stmt = $pdo->prepare($sql2);
+    $stmt->execute();
+    $avis = $stmt->fetch();
+
+    //  echo '<pre>';
+    //  print_r($_SESSION);
+    //  echo '</pre>';
+    //  die();
 
 } else {
   die('error 404');
@@ -30,7 +38,15 @@ if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
 
 if (!empty($_POST['btnavis'])) {
   if (isLogged() === true) {
-  $sql2 = "SELECT a.movie_id, m.title FROM movies_full AS m RIGHT JOIN avis AS a ON a.movie_id = m.id";
+
+  // $sql2 = "SELECT a.movie_id, m.title FROM movies_full AS m RIGHT JOIN avis AS a ON a.movie_id = m.id";
+  $user_id = $_SESSION['id'];
+
+  $sql2 = "SELECT note FROM avis WHERE user_id = AND movie_id = $id";
+  $stmt = $pdo->prepare($sql2);
+  $stmt->execute();
+  $avis = $stmt->fetch();
+
   } else {
     $error['note'] = 'Vous devez être connecter pour donner votre avis !';
   }
@@ -63,19 +79,23 @@ if (!empty($_POST['btnavis'])) {
             <p>Durée du film : <?php echo $movie['runtime']; ?></p>
             <p>Note : <?php echo $movie['rating']; ?></p>
             <p>Popalarité : <?php echo $movie['popularity']; ?></p>
+            <p>Avis : <?php echo $avis['note'] ?> <?php if ($avis['note'] === NULL) { echo 0; } ?></p>
 
-            <select>
-              <option value="one">1</option>
-              <option value="two">2</option>
-              <option value="three">3</option>
-              <option value="four">4</option>
-              <option value="five">5</option>
-            </select>
-
+            <!-- NON JE NE SUIS PAS CONNECTER -->
             <?php if (isLogged() === false) { ?>
               <p>Vous devez être <a href="connexion.php">connecter</a> ou <a href="inscription.php">inscrit</a> pour donner votre avis.</p>
             <?php } ?>
+
+            <!-- OUI JE SUIS CONNECTER -->
             <?php if (isLogged() === true) { ?>
+              <select>
+                <option value="one">1</option>
+                <option value="two">2</option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+                <option value="five">5</option>
+              </select>
+
               <input type="submit" name="btnavis" value="Donner son avis sur le film !">
             <?php } ?>
 
