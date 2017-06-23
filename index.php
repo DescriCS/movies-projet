@@ -7,30 +7,34 @@ $title = 'Page d\'acceuil';
 
 <?php include('inc/header.php'); ?>
 
-<?php
+<div class="container">
 
-  $sql = "SELECT * FROM movies_full ORDER BY RAND() DESC LIMIT 100";
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    $movies_full = $query->fetchAll();
+  <?php
 
- foreach ($movies_full as $movie) { ?>
+    $sql = "SELECT * FROM movies_full ORDER BY RAND() DESC LIMIT 100";
+      $query = $pdo->prepare($sql);
+      $query->execute();
+      $movies_full = $query->fetchAll();
 
-   <div class="movie">
-      <a href="single.php?id=<?php echo $movie['id']; ?>">
+   foreach ($movies_full as $movie) { ?>
 
-        <?php if (file_exists("./asset/posters/".$movie['id'].'.jpg') === TRUE) { ?>
-        <img src="./asset/posters/<?php echo $movie['id']; ?>.jpg" alt="<?php echo $movie['title']; ?>">
-        <h4><?php echo $movie['title'] ?></h4>
-        <?php } else  { ?>
-        <img src="./asset/images/nopic.png" alt="pas d\'image disponible">
-        <h4><?php echo $movie['title'] ?></h4>
-        <?php } ?>
+     <div class="movie d-inline-flex">
+        <a href="single.php?id=<?php echo $movie['id']; ?>">
 
-      </a>
-   </div>
+          <?php if (file_exists("./asset/posters/".$movie['id'].'.jpg') === TRUE) { ?>
+          <img src="./asset/posters/<?php echo $movie['id']; ?>.jpg" alt="<?php echo $movie['title']; ?>">
+          <h4><?php echo $movie['title'] ?></h4>
+          <?php } else  { ?>
+          <img src="./asset/images/nopic.png" alt="pas d\'image disponible">
+          <h4><?php echo $movie['title'] ?></h4>
+          <?php } ?>
 
- <?php } ?>
+        </a>
+     </div>
+
+   <?php } ?>
+
+</div>
 
 
 <?php include('inc/footer.php'); ?>
